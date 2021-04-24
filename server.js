@@ -5,6 +5,10 @@ const app = express();
 const apiRouter = require('./server/routes/api.js');
 const PORT = 3000;
 
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+require('./passport');
+
 // handle parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -42,9 +46,7 @@ app.use((err, req, res, next) => {
 
 
 
-const passport = require('passport');
-const cookieSession = require('cookie-session');
-require('./passport');
+
 
 
 
@@ -60,7 +62,7 @@ app.use(passport.session());
 
 //Unprotected Routes
 // app.get('/', (req, res) => {
-//   res.send('<h1>Home</h1>')
+//   console.log("this got hit")
 // });
 
 app.get('/failed', (req, res) => {
@@ -95,4 +97,4 @@ app.get('/logout', (req, res) => {
 
 
 
-app.listen(PORT);
+app.listen(PORT, () => { console.log(`listening on port ${PORT}`) });
