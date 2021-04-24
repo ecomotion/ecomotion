@@ -51,14 +51,27 @@ const checkUserLoggedIn = (req, res, next) => {
 
 //Protected Route.
 app.get('/profile', checkUserLoggedIn, (req, res) => {
-  res.redirect('/');
+  res.redirect('/flights');
 });
+
+// app.get('/home', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, './index.html'));
+// })
 
 // Auth Routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
 
+// add in writeToDB as the next middleware in the chain
 app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
   function (req, res) {
+    const userData = {
+      id: req.user.id,
+      name: req.user.displayName,
+      email: req.user.emails[0].value
+    }
+    console.log(userData);
+    res.locals = userData;
+    // next();
     res.redirect('/profile');
   }
 );
