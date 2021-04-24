@@ -62,6 +62,7 @@ class MainContainer extends React.Component {
             carbon: carbonOutput
           }
         });
+        console.log('state after query', this.state.flightInfo);
       })
   };
 
