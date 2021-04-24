@@ -23,6 +23,11 @@ render() {
           <option value='3'>3</option>
           <option value='4'>4</option>
         </select><br></br>
+        <label id='roundtrip-label'>Roundtrip?</label>
+        <input type='radio' id='rtYes' name='rtYN' value='yes'></input>
+        <label htmlFor='rtYes'>Yes</label>
+        <input type='radio' id='rtNo' name='rtYN' value='no'></input>
+        <label htmlFor='rtNo'>No</label><br></br>
         <button id='submit' name='submit' type='submit'>Search</button>
       </form>
     </div>
