@@ -5,6 +5,10 @@ const app = express();
 const apiRouter = require('./server/routes/api.js');
 const PORT = 3000;
 
+const passport = require('passport');
+const cookieSession = require('cookie-session');
+require('./passport');
+
 // handle parsing request body
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -24,6 +28,63 @@ app.get('/', (req, res) => {
 app.use('/api', apiRouter);
 
 
+//Configure Session Storage
+app.use(cookieSession({
+  name: 'session-name',
+  keys: ['key1', 'key2']
+}))
+
+//Configure Passport
+app.use(passport.initialize());
+app.use(passport.session());
+
+
+
+app.get('/failed', (req, res) => {
+  res.send('<h1>Log in Failed :(</h1>')
+});
+
+// Middleware - Check user is Logged in
+const checkUserLoggedIn = (req, res, next) => {
+  req.user ? next() : res.sendStatus(401);
+}
+
+//Protected Route.
+app.get('/profile', checkUserLoggedIn, (req, res) => {
+  res.redirect('/flights');
+});
+
+// app.get('/home', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, './index.html'));
+// })
+
+// Auth Routes
+app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
+
+// add in writeToDB as the next middleware in the chain
+app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/failed' }),
+  function (req, res) {
+    const userData = {
+      id: req.user.id,
+      name: req.user.displayName,
+      email: req.user.emails[0].value
+    }
+    console.log(userData);
+    res.locals = userData;
+    // next();
+    res.redirect('/profile');
+  }
+);
+
+//Logout
+app.get('/logout', (req, res) => {
+  req.session = null;
+  req.logout();
+  res.redirect('/');
+})
+
+
+
 // 404 error handler for requests to unknown route
 app.use((req, res) => res.status(404).send('Please try another page...'));
 
@@ -39,4 +100,14 @@ app.use((err, req, res, next) => {
   return res.status(errorObj.status).json(errorObj.message);
 });
 
-app.listen(PORT);
+
+
+
+
+
+
+
+
+
+
+app.listen(PORT, () => { console.log(`listening on port ${PORT}`) });
