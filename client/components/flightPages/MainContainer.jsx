@@ -73,9 +73,11 @@ class MainContainer extends React.Component {
         });
         console.log('state after query', this.state.flightInfo);
       });
+    console.log('after state after query still in onSubmit');
   }
 
   render() {
+    console.log('in the return of MainContainer');
     return (
       <div className='container'>
         <div className='outerBox'>
@@ -87,7 +89,10 @@ class MainContainer extends React.Component {
             carbon={this.state.flightInfo.carbon}
           />
           {/* pass carbon flight info into this component */}
-          <MakeDifferenceContainer carbon={this.state.flightInfo.carbon} />
+          <MakeDifferenceContainer
+            actions={this.state.offsetActions}
+            carbon={this.state.flightInfo.carbon}
+          />
         </div>
       </div>
     );

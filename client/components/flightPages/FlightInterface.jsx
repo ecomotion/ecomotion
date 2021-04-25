@@ -19,14 +19,6 @@ class FlightInterface extends React.Component {
       </div>
     );
   }
-
-  render() {
-    return (
-      <div className='flightInterface'>
-        <FlightForm onSubmit={this.props.onSubmit} />
-      </div>
-    );
-  }
 }
 
 export default FlightInterface;
