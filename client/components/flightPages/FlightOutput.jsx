@@ -6,6 +6,7 @@ class FlightOutput extends React.Component {
   }
 
   render() {
+    console.log(this.props.carbon);
     return (
       <div className='flightOutput'>
         <div>

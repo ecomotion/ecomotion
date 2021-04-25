@@ -86,7 +86,8 @@ class MainContainer extends React.Component {
             onSubmit={this.onSubmit}
             carbon={this.state.flightInfo.carbon}
           />
-          <MakeDifferenceContainer />
+          {/* pass carbon flight info into this component */}
+          <MakeDifferenceContainer carbon={this.state.flightInfo.carbon} />
         </div>
       </div>
     );
