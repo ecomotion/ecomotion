@@ -6,19 +6,16 @@ const MakeDifferenceContainer = (props) => {
     props.carbon,
     props.actions.trees
   );
-  //create algorithm for each element
-  //trees algorithm
+  //create algorithm for each element as long as the carbon emissions is not 0 as it is in the initial state
+  //our carbon emissions is in kg. 1kg = 2.2 lbs
   if (props.carbon !== 0) {
-    props.actions.trees = Math.ceil(props.carbon / 48);
-    console.log('these are my trees', props.actions.trees);
-    props.actions.meat = Math.ceil(props.carbon / 33.06);
-    props.actions.bags = Math.ceil(props.carbon / 0.0727);
+    //1 tree offsets 48 lbs of carbon emissions
+    props.actions.trees = Math.ceil((props.carbon * 2.2) / 48);
+    //1 person eating meat for one meal causes 33.06 lbs of carbon emissions
+    props.actions.meat = Math.ceil((props.carbon * 2.2) / 33.06);
+    //1 plastic bag is .0727 lbs of carbon emissions
+    props.actions.bags = Math.ceil((props.carbon * 2.2) / 0.0727);
   }
-
-  //meat algorithm
-
-  //bags algorithm
-
   return (
     <div className='make-diff-container'>
       <div>Make Diff Placeholder </div>
