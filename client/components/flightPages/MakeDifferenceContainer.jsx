@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const MakeDifferenceContainer = (props) => {
   console.log(
@@ -19,6 +20,7 @@ const MakeDifferenceContainer = (props) => {
   return (
     <div className='make-diff-container'>
       <div>Make Diff Placeholder </div>
+      {/* if the trees are greater than 1 (the initial state) then render the vallues*/}
       {props.actions.trees > 1 ? (
         <div>
           <p> Plant {props.actions.trees} Trees </p>
@@ -26,8 +28,12 @@ const MakeDifferenceContainer = (props) => {
           <p> Don't Use {props.actions.bags} Plastic Bags </p>
         </div>
       ) : (
+        // otherwise render nothing
         <p></p>
       )}
+      <Link to='/profile'>
+        <div>MY PROFILE</div>
+      </Link>
     </div>
   );
 };

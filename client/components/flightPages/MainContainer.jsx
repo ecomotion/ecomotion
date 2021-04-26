@@ -74,6 +74,20 @@ class MainContainer extends React.Component {
         console.log('state after query', this.state.flightInfo);
       });
     console.log('after state after query still in onSubmit');
+
+    const updateDatabase = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyData),
+    };
+    //working on posting the info to the database
+    fetch('/api/newflight', updateDatabase)
+      .then(() => console.log('sending flight data to database'))
+      .catch((err) =>
+        console.log('error sending flight data to database:', err)
+      );
   }
 
   render() {
