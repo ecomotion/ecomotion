@@ -1,11 +1,9 @@
 const { Pool } = require('pg');
-
-// url from ElephantSQL
-const PG_URI = process.env.postgresURI;
+require("dotenv").config();
 
 // create a new pool using the connection string above
 const pool = new Pool({
-  connectionString: PG_URI
+  connectionString: process.env.PGHOST
 });
 
 module.exports = {

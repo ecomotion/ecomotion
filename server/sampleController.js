@@ -2,11 +2,18 @@ const db = require('./databaseModels.js');
 
 const sampleController = {};
 
-sampleController.Sample = (req, res, next) => {
-  const querySelector = 'REPLACE WITH QUERY';
-  const mealResults = db.query(querySelector)
+sampleController.getAirport = (req, res, next) => {
+  console.log('inside the getAirport controller')
+  const allCodes = 'SELECT code from airports';
+  const codes = [];
+  db.query(allCodes)
     .then((results) => {
-      console.log('sample');
+      results.rows.forEach((row) => {
+        codes.push(row.code)
+      })
+      // console.log(codes);
+      res.locals.codes = codes;
+      next();
     });
 };
 

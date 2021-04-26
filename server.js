@@ -20,7 +20,7 @@ app.use('/build', express.static(__dirname + '/build'));
 
 // serve the app to main domain
 app.get('/', (req, res) => {
-  return res.sendFile(path.resolve(__dirname, './index.html'));
+  return res.sendFile(path.resolve(__dirname, './login.html'));
 })
 
 
@@ -54,9 +54,9 @@ app.get('/profile', checkUserLoggedIn, (req, res) => {
   res.redirect('/flights');
 });
 
-// app.get('/home', (req, res) => {
-//   res.sendFile(path.resolve(__dirname, './index.html'));
-// })
+app.get('/flights', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './index.html'));
+})
 
 // Auth Routes
 app.get('/auth/google', passport.authenticate('google', { scope: ['profile', 'email'] }));
