@@ -6,10 +6,14 @@ class TripCardsHolder extends Component {
     super(props);
   }
   render() {
+    const flightCards = [];
+    for (let i = 0; i < this.props.profileData.length; i += 1) {
+      flightCards.push(<Cards profileData={this.props.profileData[i]}></Cards>);
+    }
     return (
       <div>
         <div>we're holding your cards here</div>
-        <Cards />
+        {flightCards}
       </div>
     );
   }

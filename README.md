@@ -22,3 +22,7 @@ CONTEXT API
 4. anything in these consumer tags will be an anonymous function that holds the argument context which is the value you passed in step 2.
 5. React.fragment to return more than one element from the anonymous function in the context.consumer tags.
 6. update state by putting updating function in your
+
+WANT TO ADD:
+
+1. save button on the main page so that flights aren't written to the database every time you press search
