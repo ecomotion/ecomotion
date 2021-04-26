@@ -51,9 +51,9 @@ const checkUserLoggedIn = (req, res, next) => {
 };
 
 //Protected Route.
-app.get('/profile', checkUserLoggedIn, (req, res) => {
-  res.redirect('/flights');
-});
+// app.get('/profile', checkUserLoggedIn, (req, res) => {
+//   res.redirect('/flights');
+// });
 
 app.get('/flights', (req, res) => {
   res.sendFile(path.resolve(__dirname, './index.html'));
@@ -88,7 +88,7 @@ app.get(
       res.locals.email,
       res.locals.ssid
     );
-    res.redirect('/profile');
+    res.redirect('/flights');
     next();
   },
   sampleController.addProfile,
@@ -102,6 +102,11 @@ app.get('/logout', (req, res) => {
   req.session = null;
   req.logout();
   res.redirect('/');
+});
+
+// route handler for viewing profile
+app.get('/profile', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './index.html'));
 });
 
 // 404 error handler for requests to unknown route
