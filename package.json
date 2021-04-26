@@ -11,6 +11,7 @@
   "author": "Amy Chen",
   "license": "ISC",
   "dependencies": {
+    "cookie-parser": "^1.4.5",
     "cookie-session": "^1.4.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",

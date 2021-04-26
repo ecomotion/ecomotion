@@ -14,6 +14,7 @@ module.exports = {
       '/auth/**': 'http://localhost:3000',
     },
     publicPath: '/build/',
+    hot: true,
   },
   module: {
     rules: [
