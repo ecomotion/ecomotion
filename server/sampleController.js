@@ -36,6 +36,11 @@ sampleController.sendFlightInfo = (req, res, next) => {
       res.rows[0]['_id'],
       req.body.carbon,
     ];
+    console.log('checking carbon data to write to db', req.body.carbon);
+    console.log(
+      'checking type of carbon data to write to db',
+      typeof req.body.carbon
+    );
     db.query(queryInsertFlight, flightInsert)
       .then((res) => console.log('successfully queried in sendFlightInfo'))
       .then(() => next())
@@ -71,4 +76,18 @@ sampleController.addProfile = (req, res, next) => {
     })
     .catch((err) => console.log('query error', err));
 };
+
+sampleController.loadProfile = (req, res, next) => {
+  const querySelector =
+    'SELECT array_to_json(array_agg(row_to_json (r))) FROM (SELECT depart, arrive, co2_impact, CAST(co2_impact as float)*0.04583 as tree_impact, CAST(co2_impact as float)*0.066545 as meat_impact, CAST(co2_impact as float)*30.26134 as bags_impact from flights left join users on CAST(flights.user_id as integer) = CAST(users._id as integer) where users.ssid=$1) r;';
+  const userInfo = [req.cookies['session-name.sig']];
+  console.log('checking userInfo in load profile', userInfo);
+
+  db.query(querySelector, userInfo).then((result) => {
+    console.log('query result', result.rows[0]);
+    res.locals.profileData = result.rows[0];
+    return next();
+  });
+};
+
 module.exports = sampleController;

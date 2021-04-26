@@ -12,4 +12,9 @@ router.post('/newflight', sampleController.sendFlightInfo, (req, res) => {
   return res.status(200).send('input flight info into database');
 });
 
+// send profile data upon /profile page load
+router.get('/loadProfile', sampleController.loadProfile, (req, res) => {
+  res.status(200).send(res.locals.profileData);
+});
+
 module.exports = router;

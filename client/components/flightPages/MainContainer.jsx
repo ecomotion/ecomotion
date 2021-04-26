@@ -98,6 +98,10 @@ class MainContainer extends React.Component {
     console.log('after state after query still in onSubmit');
   }
 
+  componentDidUpdate() {
+    console.log('mainContainer did mount');
+  }
+
   render() {
     console.log('in the return of MainContainer');
     return (
