@@ -20,7 +20,7 @@ const MakeDifferenceContainer = (props) => {
   return (
     <div className='make-diff-container'>
       <div>Make Diff Placeholder </div>
-      {/* if the trees are greater than 1 (the initial state) then render the vallues*/}
+      {/* if the trees are greater than 1 (the initial state) then render the values*/}
       {props.actions.trees > 1 ? (
         <div>
           <p> Plant {props.actions.trees} Trees </p>
