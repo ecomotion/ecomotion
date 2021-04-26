@@ -12,11 +12,10 @@ class FlightForm extends React.Component {
 
   componentDidMount() {
     fetch('/api/')
-      .then((res) => res.json())
-      .then((codes) => {
-        console.log(codes);
+      .then(res => res.json())
+      .then((airports) => {
         return this.setState({
-          codes: codes,
+          airports: airports
         });
       })
       .catch((err) => console.log('FlightForm ERROR: ', err));
@@ -24,13 +23,14 @@ class FlightForm extends React.Component {
 
   //do I need to specify a form action in order to get this working?
   render() {
+
     return (
       <div className='form-container'>
         <form id='flight-info-form' onSubmit={() => this.props.onSubmit(event)}>
           <Autocomplete
             id='depField'
             freeSolo
-            options={this.state.codes}
+            options={this.state.airports}
             style={{ width: 300 }}
             renderInput={(params) => (
               <TextField
@@ -44,7 +44,7 @@ class FlightForm extends React.Component {
           <Autocomplete
             id='arrField'
             freeSolo
-            options={this.state.codes}
+            options={this.state.airports}
             style={{ width: 300 }}
             renderInput={(params) => (
               <TextField {...params} label='Arrving At:' variant='outlined' />

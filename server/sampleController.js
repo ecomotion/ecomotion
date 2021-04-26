@@ -8,17 +8,19 @@ const cookieParser = require('cookie-parser');
 const sampleController = {};
 
 sampleController.getAirport = (req, res, next) => {
-  console.log('inside the getAirport controller');
-  const allCodes = 'SELECT code from airports';
-  const codes = [];
-  db.query(allCodes).then((results) => {
-    results.rows.forEach((row) => {
-      codes.push(row.code);
+  console.log('inside the getAirport controller')
+  const allAirports = 'SELECT code, name, countryname from airports';
+
+  const airports = [];
+
+  db.query(allAirports)
+    .then((results) => {
+      results.rows.forEach((row) => {
+        return airports.push(row.code + ', ' + row.name + ', ' + row.countryname)
+      });
+      res.locals.airports = airports;
+      next();
     });
-    // console.log(codes);
-    res.locals.codes = codes;
-    next();
-  });
 };
 
 sampleController.sendFlightInfo = (req, res, next) => {
