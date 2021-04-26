@@ -2,9 +2,9 @@ const express = require('express');
 const sampleController = require('../sampleController.js');
 const router = express.Router();
 
-//sample route
-router.get('/', (req, res) => {
-  return res.status(200).send('sample');
+//getAirport route
+router.get('/', sampleController.getAirport, (req, res) => {
+  return res.status(200).json(res.locals.codes);
 });
 
 //receive a post request to /api/newflight and send them to sendflightinfo functionality in samplecontroller

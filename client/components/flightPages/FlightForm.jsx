@@ -1,20 +1,55 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 class FlightForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      value: '',
+    };
   }
 
+  componentDidMount() {
+    fetch('/api/')
+      .then((res) => res.json())
+      .then((codes) => {
+        console.log(codes);
+        return this.setState({
+          codes: codes,
+        });
+      })
+      .catch((err) => console.log('FlightForm ERROR: ', err));
+  }
+
+  //do I need to specify a form action in order to get this working?
   render() {
     return (
       <div className='form-container'>
         <form id='flight-info-form' onSubmit={() => this.props.onSubmit(event)}>
-          <label id='dep-label'>Departing from:</label>
-          <input type='text' id='depField' name='depField'></input>
+          <Autocomplete
+            id='depField'
+            freeSolo
+            options={this.state.codes}
+            style={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label='Departing From:'
+                variant='outlined'
+              />
+            )}
+          />
           <br></br>
-          <label id='arr-label'>Arriving at:</label>
-          <input type='text' id='arrField' name='arrField'></input>
+          <Autocomplete
+            id='arrField'
+            freeSolo
+            options={this.state.codes}
+            style={{ width: 300 }}
+            renderInput={(params) => (
+              <TextField {...params} label='Arrving At:' variant='outlined' />
+            )}
+          />
           <br></br>
           <label id='pax-label'> Number of travelers:</label>
           <select id='paxField' name='paxField'>

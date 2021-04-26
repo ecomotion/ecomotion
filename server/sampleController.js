@@ -7,12 +7,20 @@ const cookieParser = require('cookie-parser');
 
 const sampleController = {};
 
-sampleController.Sample = (req, res, next) => {
-  const querySelector = 'REPLACE WITH QUERY';
-  const mealResults = db.query(querySelector).then((results) => {
-    console.log('sample');
+sampleController.getAirport = (req, res, next) => {
+  console.log('inside the getAirport controller');
+  const allCodes = 'SELECT code from airports';
+  const codes = [];
+  db.query(allCodes).then((results) => {
+    results.rows.forEach((row) => {
+      codes.push(row.code);
+    });
+    // console.log(codes);
+    res.locals.codes = codes;
+    next();
   });
 };
+
 sampleController.sendFlightInfo = (req, res, next) => {
   console.log('getting cookies', req.cookies['session-name.sig']);
   console.log('gettin info from body for flight', req.body);
@@ -28,7 +36,8 @@ sampleController.sendFlightInfo = (req, res, next) => {
       req.body.carbon,
     ];
     db.query(queryInsertFlight, flightInsert)
-      .then((res) => console.log('successfully queried in sendFlightInfo', res))
+      .then((res) => console.log('successfully queried in sendFlightInfo'))
+      .then(() => next())
       .catch((err) =>
         console.log('unable to complete query in sendFlightInfo', err)
       );
