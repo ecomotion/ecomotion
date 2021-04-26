@@ -7,15 +7,16 @@ const sampleController = {};
 
 sampleController.getAirport = (req, res, next) => {
   console.log('inside the getAirport controller')
-  const allCodes = 'SELECT code from airports';
-  const codes = [];
-  db.query(allCodes)
+  const allAirports = 'SELECT code, name, countryname from airports';
+
+  const airports = [];
+
+  db.query(allAirports)
     .then((results) => {
       results.rows.forEach((row) => {
-        codes.push(row.code)
-      })
-      // console.log(codes);
-      res.locals.codes = codes;
+        return airports.push(row.code + ', ' + row.name + ', ' + row.countryname)
+      });
+      res.locals.airports = airports;
       next();
     });
 };

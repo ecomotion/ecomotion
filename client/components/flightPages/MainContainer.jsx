@@ -24,6 +24,15 @@ class MainContainer extends React.Component {
   onSubmit(event) {
     event.preventDefault();
 
+    const depArray = event.target.depField.value.split(",");
+    const arrArray = event.target.arrField.value.split(",");
+    const depCode = depArray[0];
+    const arrCode = arrArray[0];
+    // console.log("DEP CODE");
+    // console.log(depCode);
+    // console.log("ARR CODE");
+    // console.log(arrCode);
+
     let carbonOutput = 0;
 
     let bodyData = {
@@ -31,8 +40,8 @@ class MainContainer extends React.Component {
       passengers: event.target.paxField.value,
       legs: [
         {
-          departure_airport: event.target.depField.value,
-          destination_airport: event.target.arrField.value,
+          departure_airport: depCode,
+          destination_airport: arrCode,
         },
       ],
     };
