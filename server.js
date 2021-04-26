@@ -46,7 +46,6 @@ app.get('/failed', (req, res) => {
 
 // Middleware - Check user is Logged in
 const checkUserLoggedIn = (req, res, next) => {
-  console.log(res.locals);
   req.user ? next() : res.sendStatus(401);
 };
 
