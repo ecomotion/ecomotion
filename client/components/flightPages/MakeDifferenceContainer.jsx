@@ -19,13 +19,14 @@ const MakeDifferenceContainer = (props) => {
   }
   return (
     <div className='make-diff-container'>
-      <div>Make Diff Placeholder </div>
+
       {/* if the trees are greater than 1 (the initial state) then render the values*/}
       {props.actions.trees > 1 ? (
         <div>
-          <p> Plant {props.actions.trees} Trees </p>
-          <p> {props.actions.meat} Meatless Mondays </p>
-          <p> Don't Use {props.actions.bags} Plastic Bags </p>
+          <h3>You could offset your flight by doing the following:</h3>
+          <p> 🌳 🌳 🌳 Planting {props.actions.trees} Trees 🌳 🌳 🌳</p>
+          <p> 🐄 🐄 🐄 Enjoying {props.actions.meat} Meatless Mondays 🐄 🐄 🐄</p>
+          <p> 🛍️ 🛍️ 🛍️ Not Using {props.actions.bags} Plastic Bags 🛍️ 🛍️ 🛍️</p>
         </div>
       ) : (
         // otherwise render nothing

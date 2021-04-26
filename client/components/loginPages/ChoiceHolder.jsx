@@ -7,8 +7,8 @@ class ChoiceHolder extends Component {
 
   render() {
     return (
-      <div>
-        <a href='/auth/google'> Sign in with Google </a>
+      <div className='googleSign' id='customBtn'>
+        <a href='/auth/google'><i class="fab fa-google"></i>Sign in with Google </a>
       </div>
     );
   }

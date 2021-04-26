@@ -108,7 +108,7 @@ class MainContainer extends React.Component {
       <div className='container'>
         <div className='outerBox'>
           <div id='header-container'>
-            <p id='header'>Placeholder TBD</p>
+            <h1>ecomotion</h1>
           </div>
           <FlightInterface
             onSubmit={this.onSubmit}

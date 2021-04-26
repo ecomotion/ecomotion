@@ -11,7 +11,7 @@ class ProfileContainer extends Component {
     };
   };
 
-  componentDidMount(){
+  componentDidMount() {
     console.log('profile container did mount');
     fetch('/api/loadProfile')
       .then(response => {
@@ -20,16 +20,17 @@ class ProfileContainer extends Component {
       })
       .then(profileDataResults => {
         console.log('logging data call for profiles', profileDataResults)
-        return this.setState({profileData: profileDataResults.array_to_json });
+        return this.setState({ profileData: profileDataResults.array_to_json });
       })
-    }
+  }
 
 
   render() {
     return (
-      <div>
-        <div>MY SAVED TRIPS</div>
-        <div>
+
+      <div className='profileContainer'>
+        <div className='nav'>My Saved Trips</div>
+        <div className='gallery'>
           <TripHeader profileData={this.state.profileData} />
           <TripCardsHolder profileData={this.state.profileData} />
         </div>

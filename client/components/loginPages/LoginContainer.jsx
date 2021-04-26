@@ -7,8 +7,7 @@ import TitleHeader from './TitleHeader.jsx';
 export default function LoginContainer() {
   return (
     <MyProvider>
-      <div>
-        <p>Is anything rendering here?</p>
+      <div className='loginPageContainer'>
         <TitleHeader />
         <ChoiceHolder />
       </div>
