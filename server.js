@@ -25,7 +25,6 @@ app.get('/', (req, res) => {
   return res.sendFile(path.resolve(__dirname, './index.html'));
 });
 
-
 // api route handler
 app.use('/api', apiRouter);
 
