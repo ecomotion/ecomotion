@@ -4,10 +4,14 @@ const path = require('path');
 const app = express();
 const apiRouter = require('./server/routes/api.js');
 const PORT = 3000;
+const sampleController = require('./server/sampleController.js');
 
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 require('./passport');
+const cookieParser = require('cookie-parser');
+
+app.use(cookieParser());
 
 // handle parsing request body
 app.use(express.json());
@@ -43,6 +47,7 @@ app.get('/failed', (req, res) => {
 
 // Middleware - Check user is Logged in
 const checkUserLoggedIn = (req, res, next) => {
+  console.log(res.locals);
   req.user ? next() : res.sendStatus(401);
 };
 
@@ -65,16 +70,31 @@ app.get(
 app.get(
   '/auth/google/callback',
   passport.authenticate('google', { failureRedirect: '/failed' }),
-  function (req, res) {
+  function (req, res, next) {
     const userData = {
       id: req.user.id,
       name: req.user.displayName,
       email: req.user.emails[0].value,
+      ssid: req.cookies['session-name.sig'],
     };
     console.log(userData);
-    res.locals = userData;
-    // next();
+    res.locals.id = req.user.id;
+    res.locals.name = req.user.displayName;
+    res.locals.email = req.user.emails[0].value;
+    res.locals.ssid = req.cookies['session-name.sig'];
+    console.log(
+      'trying in authenticate',
+      res.locals.id,
+      res.locals.name,
+      res.locals.email,
+      res.locals.ssid
+    );
     res.redirect('/profile');
+    next();
+  },
+  sampleController.addProfile,
+  (req, res) => {
+    console.log('hey');
   }
 );
 
