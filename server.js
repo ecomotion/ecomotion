@@ -18,7 +18,7 @@ app.use('/build', express.static(__dirname + '/build'));
 
 // serve the app to main domain
 app.get('/', (req, res) => {
-  return res.sendFile(path.resolve(__dirname, './login.html'));
+  return res.sendFile(path.resolve(__dirname, './index.html'));
 });
 
 
