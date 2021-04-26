@@ -7,8 +7,17 @@ class TripCardsHolder extends Component {
   }
   render() {
     return (
-      <div>
-        <div>we're holding your cards here</div>
+      <div className='cardHolder'>
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
+        <Cards />
         <Cards />
       </div>
     );

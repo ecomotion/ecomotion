@@ -1,12 +1,12 @@
 import React from 'react';
+import FlightHeading from './FlightHeading.jsx';
+import ActionTypes from './ActionTypes.jsx';
 
 export default function Cards() {
   return (
-    <div>
-      <p>Flight Heading</p>
-      <p>Action Trees</p>
-      <p>Action Meat</p>
-      <p>Action Bags</p>
+    <div className='cardStyling'>
+      <FlightHeading />
+      <ActionTypes />
     </div>
   );
 }

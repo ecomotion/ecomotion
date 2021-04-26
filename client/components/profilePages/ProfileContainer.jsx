@@ -8,9 +8,10 @@ class ProfileContainer extends Component {
   }
   render() {
     return (
-      <div>
-        <div>WELCOME TO YOUR PROFILE</div>
-        <div>
+
+      <div className='profileContainer'>
+        <div className='nav'>WELCOME TO YOUR PROFILE</div>
+        <div className='gallery'>
           <TripHeader />
           <TripCardsHolder />
         </div>

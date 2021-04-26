@@ -31,7 +31,7 @@ class FlightForm extends React.Component {
             id='depField'
             freeSolo
             options={this.state.airports}
-            style={{ width: 300 }}
+            style={{ width: 300, display: 'inline-block' }}
             renderInput={(params) => (
               <TextField
                 {...params}
@@ -40,34 +40,35 @@ class FlightForm extends React.Component {
               />
             )}
           />
-          <br></br>
+          <span class="emoji-break">➡️ ✈️ ➡️</span>
           <Autocomplete
             id='arrField'
             freeSolo
             options={this.state.airports}
-            style={{ width: 300 }}
+            style={{ width: 300, display: 'inline-block' }}
             renderInput={(params) => (
               <TextField {...params} label='Arrving At:' variant='outlined' />
             )}
           />
-          <br></br>
-          <label id='pax-label'> Number of travelers:</label>
-          <select id='paxField' name='paxField'>
-            <option value='1'>1</option>
-            <option value='2'>2</option>
-            <option value='3'>3</option>
-            <option value='4'>4</option>
-          </select>
-          <br></br>
-          <label id='roundtrip-label'>Roundtrip?</label>
-          <input type='radio' id='rtYes' name='rtYN' value='yes'></input>
-          <label htmlFor='rtYes'>Yes</label>
-          <input type='radio' id='rtNo' name='rtYN' value='no'></input>
-          <label htmlFor='rtNo'>No</label>
-          <br></br>
-          <button id='submit' name='submit' type='submit'>
-            Search
+          <div className='flight-options'>
+            <label id='pax-label'> Number of travelers:</label>
+            <select id='paxField' name='paxField'>
+              <option value='1'>1</option>
+              <option value='2'>2</option>
+              <option value='3'>3</option>
+              <option value='4'>4</option>
+            </select>
+            <br></br>
+            <label id='roundtrip-label'>Roundtrip?</label>
+            <input type='radio' id='rtYes' name='rtYN' value='yes'></input>
+            <label htmlFor='rtYes'>Yes</label>
+            <input type='radio' id='rtNo' name='rtYN' value='no'></input>
+            <label htmlFor='rtNo'>No</label>
+            <br></br>
+            <button id='submit' name='submit' type='submit'>
+              Search
           </button>
+          </div>
         </form>
       </div>
     );

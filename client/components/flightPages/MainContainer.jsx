@@ -49,8 +49,8 @@ class MainContainer extends React.Component {
     // adding logic to handle round-trip flights (adds an additional object to the legs array)
     if (event.target.rtYN.value === 'yes')
       bodyData.legs.push({
-        departure_airport: event.target.arrField.value,
-        destination_airport: event.target.depField.value,
+        departure_airport: depCode,
+        destination_airport: arrCode,
       });
 
     const requestOptions = {
@@ -104,7 +104,7 @@ class MainContainer extends React.Component {
       <div className='container'>
         <div className='outerBox'>
           <div id='header-container'>
-            <p id='header'>Placeholder TBD</p>
+            <h1>ecomotion</h1>
           </div>
           <FlightInterface
             onSubmit={this.onSubmit}
