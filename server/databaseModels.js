@@ -1,9 +1,9 @@
 const { Pool } = require('pg');
-require("dotenv").config();
+require('dotenv').config();
 
 // create a new pool using the connection string above
 const pool = new Pool({
-  connectionString: process.env.PGHOST
+  connectionString: process.env.PGHOST,
 });
 
 module.exports = {
