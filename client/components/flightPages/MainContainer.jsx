@@ -24,8 +24,8 @@ class MainContainer extends React.Component {
   onSubmit(event) {
     event.preventDefault();
 
-    const depArray = event.target.depField.value.split(",");
-    const arrArray = event.target.arrField.value.split(",");
+    const depArray = event.target.depField.value.split(',');
+    const arrArray = event.target.arrField.value.split(',');
     const depCode = depArray[0];
     const arrCode = arrArray[0];
     // console.log("DEP CODE");
@@ -49,8 +49,8 @@ class MainContainer extends React.Component {
     // adding logic to handle round-trip flights (adds an additional object to the legs array)
     if (event.target.rtYN.value === 'yes')
       bodyData.legs.push({
-        departure_airport: event.target.arrField.value,
-        destination_airport: event.target.depField.value,
+        departure_airport: depCode,
+        destination_airport: arrCode,
       });
 
     const requestOptions = {
