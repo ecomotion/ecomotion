@@ -14,8 +14,6 @@ class FlightForm extends React.Component {
     fetch('/api/')
       .then(res => res.json())
       .then((airports) => {
-        console.log(airports);
-
         return this.setState({
           airports: airports
         });
