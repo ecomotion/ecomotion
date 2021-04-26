@@ -3,17 +3,17 @@ const path = require('path');
 module.exports = {
   entry: './client/index.js',
   output: {
-      path: path.resolve(__dirname, './build'),
-      filename: 'bundle.js'
+    path: path.resolve(__dirname, './build'),
+    filename: 'bundle.js',
   },
   mode: process.env.NODE_ENV,
   devServer: {
     port: 8080,
     proxy: {
-      '/api/**': 'http://localhost:3000'
+      '/api/**': 'http://localhost:3000',
+      '/auth/**': 'http://localhost:3000',
     },
-    publicPath: '/build/'
-    
+    publicPath: '/build/',
   },
   module: {
     rules: [
@@ -23,18 +23,18 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env', '@babel/preset-react']
-          }
-        }
+            presets: ['@babel/preset-env', '@babel/preset-react'],
+          },
+        },
       },
       {
         test: /\.css$/i,
-        use: ['style-loader', 'css-loader']
+        use: ['style-loader', 'css-loader'],
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource'
-      }
-    ]
-  }
-}
+        type: 'asset/resource',
+      },
+    ],
+  },
+};
