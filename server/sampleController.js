@@ -8,24 +8,23 @@ const cookieParser = require('cookie-parser');
 const sampleController = {};
 
 sampleController.getAirport = (req, res, next) => {
-  console.log('inside the getAirport controller')
+  console.log('inside the getAirport controller');
   const allAirports = 'SELECT code, name, countryname from airports';
 
   const airports = [];
 
-  db.query(allAirports)
-    .then((results) => {
-      results.rows.forEach((row) => {
-        return airports.push(row.code + ', ' + row.name + ', ' + row.countryname)
-      });
-      res.locals.airports = airports;
-      next();
+  db.query(allAirports).then((results) => {
+    results.rows.forEach((row) => {
+      return airports.push(row.code + ', ' + row.name + ', ' + row.countryname);
     });
+    res.locals.airports = airports;
+    next();
+  });
 };
 
 sampleController.sendFlightInfo = (req, res, next) => {
   console.log('getting cookies', req.cookies['session-name.sig']);
-  console.log('gettin info from body for flight', req.body);
+  console.log('getting info from body for flight', req.body);
   const ssid = [req.cookies['session-name.sig']];
   const queryUserId = 'SELECT _id FROM users WHERE ssid=$1';
   db.query(queryUserId, ssid).then((res) => {
