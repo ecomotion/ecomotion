@@ -45,17 +45,29 @@ sampleController.sendFlightInfo = (req, res, next) => {
 };
 
 sampleController.addProfile = (req, res, next) => {
-  const querySelector =
-    'INSERT INTO users (google_id, name, email, ssid) VALUES($1,$2,$3,$4);';
+  //if user exists
   const userInfo = [
     res.locals.id,
     res.locals.name,
     res.locals.email,
     res.locals.ssid,
   ];
-  db.query(querySelector, userInfo)
-    .then(() => console.log('successfully queried in addProfile'))
-    .catch((err) => console.log('unable to complete query in addProfile', err));
-  // return next();
+
+  console.log('this should be my googleId', res.locals.id);
+  const googleId = [res.locals.id];
+  const findQuery = 'SELECT * FROM users WHERE google_id=$1';
+  db.query(findQuery, googleId)
+    .then((res) => {
+      if (res.rowCount === 0) {
+        const querySelector =
+          'INSERT INTO users (google_id, name, email, ssid) VALUES($1,$2,$3,$4)';
+        db.query(querySelector, userInfo)
+          .then(() => console.log('successfully queried in addProfile'))
+          .catch((err) =>
+            console.log('unable to complete query in addProfile', err)
+          );
+      } else console.log('user already exists');
+    })
+    .catch((err) => console.log('query error', err));
 };
 module.exports = sampleController;
