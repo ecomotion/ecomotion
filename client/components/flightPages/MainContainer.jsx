@@ -24,8 +24,8 @@ class MainContainer extends React.Component {
   onSubmit(event) {
     event.preventDefault();
 
-    const depArray = event.target.depField.value.split(",");
-    const arrArray = event.target.arrField.value.split(",");
+    const depArray = event.target.depField.value.split(',');
+    const arrArray = event.target.arrField.value.split(',');
     const depCode = depArray[0];
     const arrCode = arrArray[0];
     // console.log("DEP CODE");
@@ -96,6 +96,10 @@ class MainContainer extends React.Component {
           );
       });
     console.log('after state after query still in onSubmit');
+  }
+
+  componentDidUpdate() {
+    console.log('mainContainer did mount');
   }
 
   render() {
