@@ -2,31 +2,35 @@ import React from 'react';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
+//see material UI documentation for lots more customization options for autocomplete info
+
 class FlightForm extends React.Component {
   constructor(props) {
     super(props);
+    //initializing state to grab input value
     this.state = {
       value: '',
     };
   }
 
+  //grab airport data from airports table in SQL
   componentDidMount() {
     fetch('/api/')
-      .then(res => res.json())
+      .then((res) => res.json())
       .then((airports) => {
         return this.setState({
-          airports: airports
+          airports: airports,
         });
       })
       .catch((err) => console.log('FlightForm ERROR: ', err));
   }
 
-  //do I need to specify a form action in order to get this working?
   render() {
-
     return (
       <div className='form-container'>
+        {/* this is for when someone hits search */}
         <form id='flight-info-form' onSubmit={() => this.props.onSubmit(event)}>
+          {/* special mini component that material UI library provides (lines 35-57) */}
           <Autocomplete
             id='depField'
             freeSolo
@@ -40,7 +44,7 @@ class FlightForm extends React.Component {
               />
             )}
           />
-          <span class="emoji-break">➡️ ✈️ ➡️</span>
+          <span class='emoji-break'>➡️ ✈️ ➡️</span>
           <Autocomplete
             id='arrField'
             freeSolo
@@ -67,8 +71,9 @@ class FlightForm extends React.Component {
             <br></br>
             <button id='submit' name='submit' type='submit'>
               Search
-          </button>
+            </button>
           </div>
+          {/* end of submission form */}
         </form>
       </div>
     );

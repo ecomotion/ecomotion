@@ -2,6 +2,10 @@ require('dotenv').config();
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
+//this is all standard boiler plate for OAuth passport
+//note the use of environment ENV variables below
+//if you want to set up your own passport you can set up your own google passport environment --> https://medium.com/the-dev-café/log-in-with-google-oauth-2-0-node-js-and-passport-js-1f8abe096175
+
 passport.serializeUser(function (user, done) {
   done(null, user);
 });

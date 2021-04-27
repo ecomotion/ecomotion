@@ -1,7 +1,9 @@
 /* default base settings */
 
 /* default base settings */
-@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* work in progress. change as you like */
 
 * {
   box-sizing: border-box;
@@ -10,7 +12,7 @@
 }
 
 body {
-  background: whitesmoke url("/bg4.jpg") no-repeat fixed center;
+  background: whitesmoke url('/bg4.jpg') no-repeat fixed center;
   background-size: cover;
   padding: 20px;
 }
@@ -33,7 +35,7 @@ a {
 
 .headerFlight {
   height: 40%;
-  
+
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -58,12 +60,10 @@ a {
 
 .makeDifferenceHeader {
   height: 13%;
-
 }
 
 .linkToProfile {
   height: 13%;
-
 }
 
 .searchInput {
@@ -106,12 +106,12 @@ i {
 
 .titleHeader > h1 {
   margin-bottom: 1rem;
-  font-family: "Pacifico", cursive;
+  font-family: 'Pacifico', cursive;
 }
 
 #header-container {
   margin-bottom: 1rem;
-  font-family: "Pacifico", cursive;
+  font-family: 'Pacifico', cursive;
 }
 
 .googleSign {
@@ -137,18 +137,14 @@ i {
 }
 
 button {
-  font-family: "Pacifico", cursive;
+  font-family: 'Pacifico', cursive;
   padding: 5px;
 }
 
 h3 {
-  font-family: "Pacifico", cursive;
+  font-family: 'Pacifico', cursive;
   font-size: 1rem;
 }
-
-/* .fab {
-  margin-right: ;
-} */
 
 /* Profile page design starts */
 
@@ -209,42 +205,3 @@ h3 {
   margin-bottom: 1rem;
   size: 10px;
 }
-
-/* .cont {
-  width: 80%;
-  height: 50%;
-  margin-top: 5rem;
-  margin-left: 4rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-
-h3 {
-  color: azure;
-
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  margin-left: 1rem;
-  border-bottom: 1px solid rgb(70, 69, 68);
-  width: 20%;
-}
-
-.boxes {
-  display: flex;
-  justify-content: space-around;
-  width: 90%;
-}
-
-.box {
-  background-color: rgb(172, 161, 161);
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  width: 30%;
-  height: 350px;
-  border-radius: 3px;
-  box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
-  -webkit-box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
-  -moz-box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
-} */

@@ -6,7 +6,7 @@ class FlightOutput extends React.Component {
   }
 
   render() {
-    console.log('in the flightOutput container');
+    //conditionally rendering the carbon output of a flight
     return (
       <div className='flightOutput'>
         <div>

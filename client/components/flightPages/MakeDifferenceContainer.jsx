@@ -2,11 +2,6 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const MakeDifferenceContainer = (props) => {
-  console.log(
-    'in the makeDifferenceContainer',
-    props.carbon,
-    props.actions.trees
-  );
   //create algorithm for each element as long as the carbon emissions is not 0 as it is in the initial state
   //our carbon emissions is in kg. 1kg = 2.2 lbs
   if (props.carbon !== 0) {
@@ -19,19 +14,22 @@ const MakeDifferenceContainer = (props) => {
   }
   return (
     <div className='make-diff-container'>
-
       {/* if the trees are greater than 1 (the initial state) then render the values*/}
       {props.actions.trees > 1 ? (
         <div>
           <h3>You could offset your flight by doing the following:</h3>
           <p> 🌳 🌳 🌳 Planting {props.actions.trees} Trees 🌳 🌳 🌳</p>
-          <p> 🐄 🐄 🐄 Enjoying {props.actions.meat} Meatless Mondays 🐄 🐄 🐄</p>
+          <p>
+            {' '}
+            🐄 🐄 🐄 Enjoying {props.actions.meat} Meatless Mondays 🐄 🐄 🐄
+          </p>
           <p> 🛍️ 🛍️ 🛍️ Not Using {props.actions.bags} Plastic Bags 🛍️ 🛍️ 🛍️</p>
         </div>
       ) : (
         // otherwise render nothing
         <p></p>
       )}
+      {/* link to the profile page - Reach Router */}
       <Link to='/profile'>
         <div>MY PROFILE</div>
       </Link>
