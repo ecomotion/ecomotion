@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+//WE DID NOT USE THIS BUT COULD BE USED IN THE FUTURE FOR CONTEXT API REACT CONTEXT HOOKS!
+
 //creating a context using react context api
 const MyContext = React.createContext();
 

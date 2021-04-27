@@ -1,9 +1,207 @@
 /* default base settings */
 
+/* default base settings */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+/* work in progress. change as you like */
+
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+body {
+  background: whitesmoke url('/bg4.jpg') no-repeat fixed center;
+  background-size: cover;
+  padding: 20px;
+}
 
+a {
+  text-decoration: none;
+}
+
+.fa-google {
+  margin-right: 5px;
+}
+
+/* Flight Page styling */
+.outerBox {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+}
+
+.headerFlight {
+  height: 40%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-container {
+  display: flex;
+
+  border-bottom: 1px solid rgb(70, 69, 68);
+}
+
+.make-diff-container {
+  display: flex;
+  flex-direction: column;
+  height: 58%;
+}
+
+.actions {
+  height: 70%;
+}
+
+.makeDifferenceHeader {
+  height: 13%;
+}
+
+.linkToProfile {
+  height: 13%;
+}
+
+.searchInput {
+  margin: 1rem 0.5rem;
+  width: 20rem;
+  padding: 0.8rem 1rem;
+  border-radius: 5px;
+}
+
+.btnSearch {
+  margin-left: 0.5rem;
+  padding: 0.65rem;
+  border-radius: 6px;
+  color: rgb(70, 69, 68);
+  background-color: rgb(201, 227, 245);
+}
+
+i {
+  size: 7x;
+  color: rgb(93, 168, 221);
+}
+
+.options {
+  font-size: 1.2rem;
+}
+
+/* Login page design starts */
+
+.loginPageContainer {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.titleHeader {
+  font-size: 2rem;
+  color: rgb(230, 223, 223);
+}
+
+.titleHeader > h1 {
+  margin-bottom: 1rem;
+  font-family: 'Pacifico', cursive;
+}
+
+#header-container {
+  margin-bottom: 1rem;
+  font-family: 'Pacifico', cursive;
+}
+
+.googleSign {
+  font-size: 1.2rem;
+  padding: 0.8rem;
+  background-color: rgb(255, 255, 247);
+  border-radius: 1rem;
+}
+
+#flight-info-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.emoji-break {
+  margin: 7px 0;
+}
+
+.flight-options {
+  margin: 7px 0;
+  align-self: flex-start;
+}
+
+button {
+  font-family: 'Pacifico', cursive;
+  padding: 5px;
+}
+
+h3 {
+  font-family: 'Pacifico', cursive;
+  font-size: 1rem;
+}
+
+/* Profile page design starts */
+
+.profileContainer {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav {
+  background-color: rgb(136, 133, 133);
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.gallery {
+  display: flex;
+  flex-direction: column;
+}
+
+.tripHeader {
+  margin-top: 1rem;
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.cardHolder {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-flow: row;
+  gap: 1rem;
+  /* background-color: gold; */
+  padding: 1rem;
+}
+
+.cardStyling {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: rgb(253, 253, 253);
+  border-radius: 7px;
+  box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
+  -webkit-box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
+  -moz-box-shadow: -1px 5px 26px -5px rgba(0, 0, 0, 0.81);
+}
+
+.actionTypes {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.actionTypes > i {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  size: 10px;
+}

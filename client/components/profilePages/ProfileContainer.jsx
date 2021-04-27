@@ -11,7 +11,7 @@ class ProfileContainer extends Component {
   }
 
   componentDidMount() {
-    console.log('profile container did mount');
+    //fetching the info from flights table in sql db.
     fetch('/api/loadProfile')
       .then((response) => {
         console.log('raw data', response);
@@ -23,11 +23,12 @@ class ProfileContainer extends Component {
       });
   }
 
+  //send profile data to child components
   render() {
     return (
-      <div>
-        <div>MY SAVED TRIPS</div>
-        <div>
+      <div className='profileContainer'>
+        <div className='nav'>My Saved Trips</div>
+        <div className='gallery'>
           <TripHeader profileData={this.state.profileData} />
           <TripCardsHolder profileData={this.state.profileData} />
         </div>

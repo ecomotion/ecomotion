@@ -5,7 +5,7 @@ class TripCardsHolder extends Component {
   constructor(props) {
     super(props);
   }
-
+  //create as many cards as are in the profileData array and send profileData to cards compoonents
   render() {
     const flightCards = [];
     for (let i = 0; i < this.props.profileData.length; i += 1) {
